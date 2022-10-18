@@ -61,8 +61,8 @@ public class Vector2dTest {
     }
 
     @Test
-    void substractTest(){
-        assertEquals(new Vector2d(4,7).substract(new Vector2d(2,8)),
+    void subtractTest(){
+        assertEquals(new Vector2d(4,7).subtract(new Vector2d(2,8)),
                 new Vector2d(2,-1));
     }
 
