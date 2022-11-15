@@ -42,6 +42,7 @@ public class WorldIT {
 //        for(MoveDirection direction : dir3) a3.move(direction);
 //        assertEquals("Orientacja: Północ, Pozycja: (4,4)", a3.toString());
 //    }
+
     @Test
     void engineTest1(){
         MoveDirection[] directions = new OptionsParser().parse(new String[]{"f"});

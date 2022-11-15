@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="agh.ics.oop.WorldIT" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-11-14T22:56:17" hostname="LAPTOP-M05EVE9S" time="0.014">
+<testsuite name="agh.ics.oop.WorldIT" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-11-15T22:39:58" hostname="LAPTOP-M05EVE9S" time="0.026">
   <properties/>
-  <testcase name="engineTest3()" classname="agh.ics.oop.WorldIT" time="0.014"/>
-  <system-out><![CDATA[2
+  <testcase name="engineTest1()" classname="agh.ics.oop.WorldIT" time="0.023"/>
+  <testcase name="engineTest2()" classname="agh.ics.oop.WorldIT" time="0.001"/>
+  <testcase name="engineTest3()" classname="agh.ics.oop.WorldIT" time="0.001"/>
+  <system-out><![CDATA[1
+1
+1
+4
+2
 4
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

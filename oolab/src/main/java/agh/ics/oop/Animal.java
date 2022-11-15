@@ -16,10 +16,6 @@ public class Animal {
         animalVect = initialPosition;
     }
 
-    public Animal() {
-    }
-
-
     public String toString() {
         String orientation = switch (this.animalDir){
             case NORTH -> "N";
@@ -41,22 +37,6 @@ public class Animal {
     }
 
     public void move(MoveDirection direction) {
-//        switch (direction) {
-//            case RIGHT -> animalDir = animalDir.next();
-//            case LEFT -> animalDir = animalDir.previous();
-//            case FORWARD -> {
-//                if (animalVect.add(animalDir.toUnitVector()).precedes(new Vector2d(4, 4)) &&
-//                        animalVect.add(animalDir.toUnitVector()).follows(new Vector2d(0, 0))) {
-//                    animalVect = animalVect.add(animalDir.toUnitVector());
-//                }
-//            }
-//            case BACKWARD -> {
-//                if (animalVect.subtract(animalDir.toUnitVector()).precedes(new Vector2d(4, 4)) &&
-//                        animalVect.subtract(animalDir.toUnitVector()).follows(new Vector2d(0, 0))) {
-//                    animalVect = animalVect.subtract(animalDir.toUnitVector());
-//                }
-//            }
-//        }
 
         switch (direction) {
             case RIGHT -> animalDir = animalDir.next();

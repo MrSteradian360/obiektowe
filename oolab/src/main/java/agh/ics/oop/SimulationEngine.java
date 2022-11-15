@@ -23,7 +23,6 @@ public class SimulationEngine implements IEngine{
             Animal a = ((Animal) map.objectAt(pos[i % positions.length]));
             a.move(moveDirection[i]);
             pos[i % positions.length] = a.getPosition();
-            //System.out.println(a.getPosition());
         }
     }
 }
