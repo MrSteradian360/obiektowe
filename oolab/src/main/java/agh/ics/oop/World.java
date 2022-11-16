@@ -1,8 +1,8 @@
 package agh.ics.oop;
 
 public class World {
-    public static void run(Direction[] directions) {
-        System.out.println("Do przodu");
+    public static void run(MoveDirection[] directions) {
+        //System.out.println("Do przodu");
 //        for (int i = 0; i < directions.length; i++) {
 //            if (i != directions.length - 1) System.out.print(directions[i] + ",");
 //            else System.out.println(directions[i]);
@@ -20,14 +20,14 @@ public class World {
         }
     }
 
-    public static Direction[] change(String[] args){
-        Direction[] dir = new Direction[10];
+    public static MoveDirection[] change(String[] args){
+        MoveDirection[] dir = new MoveDirection[args.length];
         for(int i = 0; i < args.length; i++){
             dir[i] = switch(args[i]){
-                case "f" -> Direction.FORWARD;
-                case "b"-> Direction.BACKWARD;
-                case "l"-> Direction.LEFT;
-                case "r"-> Direction.RIGHT;
+                case "f" -> MoveDirection.FORWARD;
+                case "b"-> MoveDirection.BACKWARD;
+                case "l"-> MoveDirection.LEFT;
+                case "r"-> MoveDirection.RIGHT;
                 default -> null;
             };
         }
@@ -36,7 +36,7 @@ public class World {
 
     public static void main(String[] args) {
         System.out.println("Start");
-        Direction[] directions = change(args);
+        MoveDirection[] directions = change(args);
         run(directions);
         System.out.println("Stop");
         System.out.println();
@@ -53,6 +53,32 @@ public class World {
         System.out.println(md1.next());
         System.out.println(md1.previous());
         System.out.println(md1.toUnitVector());
+
+        System.out.println();
+        System.out.println(new Animal());
+
+        System.out.println();
+        Animal animal1 = new Animal();
+        System.out.println("Start");
+        animal1.move(MoveDirection.RIGHT);
+        animal1.move(MoveDirection.FORWARD);
+        animal1.move(MoveDirection.FORWARD);
+        animal1.move(MoveDirection.FORWARD);
+        System.out.println("Stop");
+
+        Animal animal2 = new Animal();
+        OptionsParser parser = new OptionsParser();
+        System.out.println();
+        System.out.println("Start");
+        MoveDirection[] directions1 = parser.parse(new String[]{"r", "f", "f", "f", "s", "p"});
+        for(MoveDirection direction : directions1) animal2.move(direction);
+        System.out.println("Stop");
+        System.out.println();
+
+        //lab3_zad 10: dodać kolekcję grupującą współrzędne zwierząt i dodać warunek do ifa dla case FORWARD i BACKWARD
+        // w switchu w metodzie main sprwdzajcego czy nowego położenia zwierzęcia nie ma w kolekcji, jeśli nie to
+        // przesuwamy zwierzę na nową pozycję i dodajemy nowe koordynaty do kolekcji, jeśli  jest to nie wykonujemy
+        // przejścia
     }
 
 

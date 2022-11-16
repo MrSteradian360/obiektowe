@@ -2,13 +2,13 @@ package agh.ics.oop;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class Vector2dTest {
     @Test
     void equalsTest(){
-        assertEquals(new Vector2d(1,1).equals(new Vector2d(1,0)), false);
-        assertEquals(new Vector2d(1,1).equals(new Vector2d(1,1)), true);
+        assertFalse(new Vector2d(1, 1).equals(new Vector2d(1, 0)));
+        assertTrue(new Vector2d(1, 1).equals(new Vector2d(1, 1)));
     }
 
     @Test
@@ -18,20 +18,20 @@ public class Vector2dTest {
 
     @Test
     void precedesTest(){
-        assertEquals(new Vector2d(4,4).precedes(new Vector2d(4,4)), true);
-        assertEquals(new Vector2d(4,7).precedes(new Vector2d(4,8)), true);
-        assertEquals(new Vector2d(4,7).precedes(new Vector2d(4,2)), false);
-        assertEquals(new Vector2d(4,7).precedes(new Vector2d(2,2)), false);
-        assertEquals(new Vector2d(4,7).precedes(new Vector2d(4,7)), true);
+        assertTrue(new Vector2d(4, 4).precedes(new Vector2d(4, 4)));
+        assertTrue(new Vector2d(4, 7).precedes(new Vector2d(4, 8)));
+        assertFalse(new Vector2d(4, 7).precedes(new Vector2d(4, 2)));
+        assertFalse(new Vector2d(4, 7).precedes(new Vector2d(2, 2)));
+        assertTrue(new Vector2d(4, 7).precedes(new Vector2d(4, 7)));
     }
 
     @Test
     void followsTest(){
-        assertEquals(new Vector2d(4,4).follows(new Vector2d(4,4)), true);
-        assertEquals(new Vector2d(4,7).follows(new Vector2d(4,8)), false);
-        assertEquals(new Vector2d(4,7).follows(new Vector2d(4,2)), true);
-        assertEquals(new Vector2d(4,7).follows(new Vector2d(2,2)), true);
-        assertEquals(new Vector2d(4,7).follows(new Vector2d(4,7)), true);
+        assertTrue(new Vector2d(4, 4).follows(new Vector2d(4, 4)));
+        assertFalse(new Vector2d(4, 7).follows(new Vector2d(4, 8)));
+        assertTrue(new Vector2d(4, 7).follows(new Vector2d(4, 2)));
+        assertTrue(new Vector2d(4, 7).follows(new Vector2d(2, 2)));
+        assertTrue(new Vector2d(4, 7).follows(new Vector2d(4, 7)));
     }
 
     @Test
