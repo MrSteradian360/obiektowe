@@ -35,7 +35,9 @@ public interface IWorldMap {
      *            Position to check.
      * @return True if the position is occupied.
      */
-    boolean isOccupied(Vector2d position);
+    default boolean isOccupied(Vector2d position){
+        return objectAt(position) != null;
+    }
 
     /**
      * Return an object at a given position.
@@ -45,4 +47,8 @@ public interface IWorldMap {
      * @return Object or null if the position is not occupied.
      */
     Object objectAt(Vector2d position);
+
+    int getWidth();
+
+    int getHeight();
 }

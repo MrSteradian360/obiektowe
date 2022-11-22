@@ -82,16 +82,17 @@ public class World {
 
 //        RectangularMap rectangularMap = new RectangularMap(4,4);
 //        System.out.println(rectangularMap);
-
-        MoveDirection[] directions = new OptionsParser().parse(args);
-        IWorldMap map = new RectangularMap(10, 5);
-        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
-        IEngine engine = new SimulationEngine(directions, map, positions);
-        engine.run();
-        System.out.println(map);
 //        Animal a = new Animal(map, new Vector2d(2,2));
 //        map.place(a);
 //        System.out.println(map.objectAt(new Vector2d(2,2)));
+
+
+        MoveDirection[] directions = new OptionsParser().parse(args);
+        GrassField grassField = new GrassField(10);
+        Vector2d[] positions = { new Vector2d(2,2), new Vector2d(3,4) };
+        IEngine engine = new SimulationEngine(directions, grassField, positions);
+        engine.run();
+        System.out.println(grassField);
     }
 
 
