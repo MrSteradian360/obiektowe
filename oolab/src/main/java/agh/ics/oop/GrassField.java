@@ -13,7 +13,8 @@ public class GrassField extends AbstractWorldMap{
 
     private int fieldsNum;
     private Vector2d[] positionsVect;
-    private List<Grass> grasses = new ArrayList<>();
+
+    //private List<Grass> grasses = new ArrayList<>();
 
     public GrassField(int fieldsNum) {
         this.fieldsNum = fieldsNum;
@@ -33,7 +34,8 @@ public class GrassField extends AbstractWorldMap{
                 .toArray();
         positionsVect = new Vector2d[positionsArray.length];
         System.arraycopy(positionsArray, 0, this.positionsVect, 0, positionsArray.length);
-        for (Vector2d position : positionsVect) grasses.add(new Grass(position));
+        //for (Vector2d position : positionsVect) grasses.add(new Grass(position));
+        for (Vector2d position : positionsVect) elements.add(new Grass(position));
     }
 
     @Override
@@ -44,8 +46,12 @@ public class GrassField extends AbstractWorldMap{
 
     @Override
     public Object objectAt(Vector2d position) {
-        Object o1 = super.objectAt(position);
-        Object o2 = grasses.stream().filter(grass -> grass.isAt(position)).findFirst().orElse(null);
+        //Object o1 = super.objectAt(position);
+        //Object o2 = grasses.stream().filter(grass -> grass.isAt(position)).findFirst().orElse(null);
+        //if (o1 != null) return o1;
+        //else return o2;
+        Object o1 = elements.stream().filter(element -> element.isAt(position) && element instanceof Animal).findFirst().orElse(null);
+        Object o2 = elements.stream().filter(element -> element.isAt(position)).findFirst().orElse(null);
         if (o1 != null) return o1;
         else return o2;
     }

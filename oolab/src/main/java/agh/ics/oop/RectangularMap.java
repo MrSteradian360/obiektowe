@@ -12,8 +12,8 @@ public class RectangularMap extends AbstractWorldMap {
         this.height = height;
     }
 
-    public Collection<Animal> getAnimals(){
-        return Collections.unmodifiableCollection(animals);
+    public Collection<IMapElement> getElements(){
+        return Collections.unmodifiableCollection(elements);
     }
 
     @Override
