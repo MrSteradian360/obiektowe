@@ -1,8 +1,12 @@
 package agh.ics.oop;
 
+import java.util.LinkedList;
+
 public class Animal extends AbstractWorldMapElement {
     private MapDirection animalDir = MapDirection.NORTH;
     //protected Vector2d position = new Vector2d(2, 2);
+
+    private LinkedList<IPositionChangeObserver> observers = new LinkedList<>();
 
     private IWorldMap map;
 
@@ -35,14 +39,29 @@ public class Animal extends AbstractWorldMapElement {
             case LEFT -> animalDir = animalDir.previous();
             case FORWARD -> {
                 if (map.canMoveTo(position.add(animalDir.toUnitVector()))) {
+                    this.positionChanged(position.add(animalDir.toUnitVector()));
                     position = position.add(animalDir.toUnitVector());
+
                 }
             }
             case BACKWARD -> {
                 if (map.canMoveTo(position.subtract(animalDir.toUnitVector()))) {
+                    this.positionChanged(position.subtract(animalDir.toUnitVector()));
                     position = position.subtract(animalDir.toUnitVector());
                 }
             }
         }
+    }
+
+    void addObserver(IPositionChangeObserver observer){
+        observers.add(observer);
+    }
+
+    void removeObserver(IPositionChangeObserver observer){
+        observers.remove(observer);
+    }
+
+    public void positionChanged(Vector2d newPosition){
+        for (IPositionChangeObserver observer : observers) observer.positionChanged(this.position, newPosition);
     }
 }
