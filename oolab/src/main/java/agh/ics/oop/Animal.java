@@ -1,8 +1,8 @@
 package agh.ics.oop;
 
-public class Animal {
+public class Animal extends AbstractWorldMapElement {
     private MapDirection animalDir = MapDirection.NORTH;
-    private Vector2d animalVect = new Vector2d(2, 2);
+    //protected Vector2d position = new Vector2d(2, 2);
 
     private IWorldMap map;
 
@@ -13,8 +13,9 @@ public class Animal {
 
     public Animal(IWorldMap map, Vector2d initialPosition) {
         this.map = map;
-        animalVect = initialPosition;
+        super.position = initialPosition;
     }
+
 
     public String toString() {
         String orientation = switch (this.animalDir){
@@ -27,31 +28,21 @@ public class Animal {
         return orientation;
     }
 
-    public boolean isAt(Vector2d position) {
-        return position.x == this.animalVect.x
-                && position.y == this.animalVect.y;
-    }
-
-    public Vector2d getPosition(){
-        return this.animalVect;
-    }
-
     public void move(MoveDirection direction) {
 
         switch (direction) {
             case RIGHT -> animalDir = animalDir.next();
             case LEFT -> animalDir = animalDir.previous();
             case FORWARD -> {
-                if (map.canMoveTo(animalVect.add(animalDir.toUnitVector()))) {
-                    animalVect = animalVect.add(animalDir.toUnitVector());
+                if (map.canMoveTo(position.add(animalDir.toUnitVector()))) {
+                    position = position.add(animalDir.toUnitVector());
                 }
             }
             case BACKWARD -> {
-                if (map.canMoveTo(animalVect.subtract(animalDir.toUnitVector()))) {
-                    animalVect = animalVect.subtract(animalDir.toUnitVector());
+                if (map.canMoveTo(position.subtract(animalDir.toUnitVector()))) {
+                    position = position.subtract(animalDir.toUnitVector());
                 }
             }
         }
-        //System.out.println(this);
     }
 }
