@@ -41,7 +41,6 @@ public class Animal extends AbstractWorldMapElement {
                 if (map.canMoveTo(position.add(animalDir.toUnitVector()))) {
                     this.positionChanged(position.add(animalDir.toUnitVector()));
                     position = position.add(animalDir.toUnitVector());
-
                 }
             }
             case BACKWARD -> {
@@ -53,15 +52,15 @@ public class Animal extends AbstractWorldMapElement {
         }
     }
 
-    void addObserver(IPositionChangeObserver observer){
+    public void addObserver(IPositionChangeObserver observer){
         observers.add(observer);
     }
 
-    void removeObserver(IPositionChangeObserver observer){
+    public void removeObserver(IPositionChangeObserver observer){
         observers.remove(observer);
     }
 
-    public void positionChanged(Vector2d newPosition){
+    private void positionChanged(Vector2d newPosition){
         for (IPositionChangeObserver observer : observers) observer.positionChanged(this.position, newPosition);
     }
 }

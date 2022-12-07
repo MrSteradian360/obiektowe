@@ -46,6 +46,10 @@ public class RectangularMap extends AbstractWorldMap {
 //        return false;
     //}
 
+//    public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
+//        animals.put(newPosition, animals.get(oldPosition));
+//        animals.remove(oldPosition);
+//    }
 
 
 }
