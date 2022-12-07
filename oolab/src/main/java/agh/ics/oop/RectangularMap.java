@@ -12,9 +12,9 @@ public class RectangularMap extends AbstractWorldMap {
         this.height = height;
     }
 
-    public Collection<IMapElement> getElements(){
-        return Collections.unmodifiableCollection(elements);
-    }
+    //public Collection<IMapElement> getElements(){
+    //    return Collections.unmodifiableCollection(elements);
+    //}
 
     @Override
     public boolean canMoveTo(Vector2d position) {

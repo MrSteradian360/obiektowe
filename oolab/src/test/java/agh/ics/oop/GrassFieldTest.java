@@ -11,7 +11,7 @@ public class GrassFieldTest {
     void objectAtTest(){
         GrassField field1 = new GrassField(10);
         Animal a1 = new Animal(field1, new Vector2d(4,2));
-        field1.elements.add(a1);
+        field1.animals.put(a1.getPosition(), a1);
         assertEquals(a1, field1.objectAt(new Vector2d(4,2)));
     }
 
@@ -19,7 +19,7 @@ public class GrassFieldTest {
     void isOccupied(){
         GrassField field2 = new GrassField(8);
         Animal a2 = new Animal(field2, new Vector2d(5,8));
-        field2.elements.add(a2);
+        field2.animals.put(a2.getPosition(), a2);
         assertTrue(field2.isOccupied(new Vector2d(5,8)));
     }
 
@@ -35,7 +35,7 @@ public class GrassFieldTest {
     void canMoveTo(){
         GrassField field4 = new GrassField(12);
         Animal a4 = new Animal(field4, new Vector2d(5,8));
-        field4.elements.add(a4);
+        field4.animals.put(a4.getPosition(), a4);
         assertTrue(field4.canMoveTo(new Vector2d(5,7)));
     }
 }

@@ -93,6 +93,7 @@ public class World {
         IEngine engine = new SimulationEngine(directions, grassField, positions);
         engine.run();
         System.out.println(grassField);
+
     }
 
 

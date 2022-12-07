@@ -10,7 +10,11 @@ public class SimulationEngine implements IEngine{
         this.moveDirection = moveDirection;
         this.positions = positions;
         for (Vector2d v : positions){
-            map.place(new Animal(map, v));
+            Animal a = new Animal(map, v);
+            map.place(a);
+            System.out.println(a.getPosition());
+            a.addObserver((IPositionChangeObserver) map);
+
         }
     }
 
