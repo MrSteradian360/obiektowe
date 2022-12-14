@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Vector2d {
@@ -32,14 +33,14 @@ public class Vector2d {
     }
 
     public Vector2d upperRight(Vector2d other){
-        int x1 = this.x > other.x ? this.x : other.x;
-        int y1 = this.y > other.y ? this.y : other.y;
+        int x1 = Math.max(this.x, other.x);
+        int y1 = Math.max(this.y, other.y);
         return new Vector2d(x1,y1);
     }
 
     public Vector2d lowerLeft(Vector2d other){
-        int x1 = this.x < other.x ? this.x : other.x;
-        int y1 = this.y < other.y ? this.y : other.y;
+        int x1 = Math.min(this.x, other.x);
+        int y1 = Math.min(this.y, other.y);
         return new Vector2d(x1,y1);
     }
 
@@ -54,9 +55,8 @@ public class Vector2d {
     public boolean equals(Object other){
         if (this == other)
             return true;
-        if (!(other instanceof Vector2d))
+        if (!(other instanceof Vector2d that))
             return false;
-        Vector2d that = (Vector2d) other;
         return that.x == x && that.y == y;
     }
 
@@ -69,4 +69,8 @@ public class Vector2d {
         return Objects.hash(this.x, this.y);
     }
 
+//    @Override
+//    public int compareTo(Vector2d o) {
+//        if(this.x > this.o)
+//    }
 }

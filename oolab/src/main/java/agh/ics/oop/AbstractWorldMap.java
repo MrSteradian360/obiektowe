@@ -6,11 +6,12 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     //protected List<Animal> animals = new ArrayList<>();
     //protected List<IMapElement> elements = new ArrayList<>();
 
-    protected Map<Vector2d, IMapElement> animals = new HashMap<>();
+    protected Map<Vector2d, Animal> animals = new HashMap<>();
+    protected Map<Vector2d, Grass> grasses = new HashMap<>();
 
     @Override
     public boolean place(Animal animal) {
-        if (!canMoveTo(animal.getPosition())) return false;
+        if (!canMoveTo(animal.getPosition())) throw new IllegalArgumentException(animal.getPosition() + " - animal cannot be placed on this field");
         else {
             //elements.add(animal);
             animals.put(animal.getPosition(), animal);
@@ -41,7 +42,6 @@ public abstract class AbstractWorldMap implements IWorldMap, IPositionChangeObse
     public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
         animals.put(newPosition, animals.get(oldPosition));
         animals.remove(oldPosition);
-
     }
 
 

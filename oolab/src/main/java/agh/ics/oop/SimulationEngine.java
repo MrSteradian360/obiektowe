@@ -14,7 +14,6 @@ public class SimulationEngine implements IEngine{
             map.place(a);
             System.out.println(a.getPosition());
             a.addObserver((IPositionChangeObserver) map);
-
         }
     }
 
