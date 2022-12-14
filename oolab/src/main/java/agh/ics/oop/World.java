@@ -89,7 +89,13 @@ public class World {
 //        map.place(a);
 //        System.out.println(map.objectAt(new Vector2d(2,2)));
 
+
+//        SimulationEngine engine = new SimulationEngine();
+//        Thread engineThread = new Thread(engine);
+//        engineThread.start();
+
         Application.launch(App.class, args);
+
     }
 
 

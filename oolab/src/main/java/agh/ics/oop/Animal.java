@@ -1,5 +1,6 @@
 package agh.ics.oop;
 
+import java.io.FileNotFoundException;
 import java.util.LinkedList;
 
 public class Animal extends AbstractWorldMapElement {
@@ -22,14 +23,14 @@ public class Animal extends AbstractWorldMapElement {
 
 
     public String toString() {
-        String orientation = switch (this.animalDir){
+        //return "Orientacja: " + this.animalDir.toString() + ", Pozycja: " + this.animalVect.toString();
+        String o = switch (this.animalDir){
             case NORTH -> "N";
             case SOUTH -> "S";
             case EAST -> "E";
             case WEST -> "W";
         };
-        //return "Orientacja: " + this.animalDir.toString() + ", Pozycja: " + this.animalVect.toString();
-        return orientation;
+        return o;
     }
 
     public void move(MoveDirection direction) {
@@ -60,7 +61,17 @@ public class Animal extends AbstractWorldMapElement {
         observers.remove(observer);
     }
 
-    private void positionChanged(Vector2d newPosition){
+    private void positionChanged(Vector2d newPosition) {
         for (IPositionChangeObserver observer : observers) observer.positionChanged(this.position, newPosition);
+    }
+
+    @Override
+    public String getElementPath() {
+        return switch (this.animalDir){
+            case NORTH -> "src/main/resources/up.png";
+            case SOUTH -> "src/main/resources/down.png";
+            case EAST -> "src/main/resources/right.png";
+            case WEST -> "src/main/resources/left.png";
+        };
     }
 }
