@@ -1,11 +1,15 @@
 package agh.ics.oop;
 
-public class SimulationEngine implements IEngine{
+import javafx.application.Application;
+
+import java.io.FileNotFoundException;
+
+public class SimulationEngine implements IEngine, Runnable{
     private MoveDirection[] moveDirection;
     private IWorldMap map;
     private Vector2d[] positions;
 
-    public SimulationEngine(MoveDirection[] moveDirection, IWorldMap map, Vector2d[] positions){
+    public SimulationEngine(MoveDirection[] moveDirection, IWorldMap map, Vector2d[] positions, Application app){
         this.map = map;
         this.moveDirection = moveDirection;
         this.positions = positions;
@@ -14,13 +18,14 @@ public class SimulationEngine implements IEngine{
             map.place(a);
             System.out.println(a.getPosition());
             a.addObserver((IPositionChangeObserver) map);
+            a.addObserver((IPositionChangeObserver) app);
         }
     }
 
     @Override
     public void run() {
-        System.out.println(positions.length);
-        System.out.println(moveDirection.length);
+        //System.out.println(positions.length);
+        //System.out.println(moveDirection.length);
         Vector2d[] pos = positions;
         for (int i = 0; i < this.moveDirection.length; i++){
             Animal a = ((Animal) map.objectAt(pos[i % positions.length]));
